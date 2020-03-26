@@ -13,6 +13,7 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AuthModule } from "./auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
+import { CovidTestModule } from './covid-test/covid-test.module';
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -39,7 +40,8 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 		SharedModule,
 		MaterialModule,
 		LayoutModule,
-		AuthModule
+		AuthModule,
+		CovidTestModule
 	],
 	providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
 	bootstrap: [AppComponent]

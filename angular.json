@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "student-mgmt-client": {
+    "covid-tests-client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/student-mgmt-client",
+            "outputPath": "dist/covid-tests-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "student-mgmt-client:build"
+            "browserTarget": "covid-tests-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "student-mgmt-client:build:production"
+              "browserTarget": "covid-tests-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "student-mgmt-client:build"
+            "browserTarget": "covid-tests-client:build"
           }
         },
         "test": {
@@ -111,11 +111,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "student-mgmt-client:serve"
+            "devServerTarget": "covid-tests-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "student-mgmt-client:serve:production"
+              "devServerTarget": "covid-tests-client:serve:production"
             }
           }
         }
@@ -162,5 +162,5 @@
       }
     }
   },
-  "defaultProject": "student-mgmt-client"
+  "defaultProject": "covid-tests-client"
 }
