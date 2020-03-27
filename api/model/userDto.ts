@@ -17,6 +17,7 @@ export interface UserDto {
     passwordDto?: ChangePasswordDto;
     settings: SettingsDto;
     role?: UserDto.RoleEnum;
+    isActive?: boolean;
 }
 export namespace UserDto {
     export type RoleEnum = 'DEFAULT' | 'ADMIN';

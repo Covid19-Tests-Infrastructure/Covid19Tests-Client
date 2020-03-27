@@ -16,6 +16,7 @@ import { SharedModule } from "./shared/shared.module";
 import { CovidTestModule } from "./covid-test/covid-test.module";
 import { ApiModule, BASE_PATH } from "../../api";
 import { MatNativeDateModule } from "@angular/material/core";
+import { HomeComponent } from "./home/home.component";
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -24,7 +25,8 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 @NgModule({
 	declarations: [
 		AppComponent,
-		NavigationComponent
+		NavigationComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,

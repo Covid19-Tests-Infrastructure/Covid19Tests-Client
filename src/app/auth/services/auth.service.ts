@@ -19,13 +19,14 @@ export class AuthService {
 			.catch(error => {
 				console.log(error);
 				// Rethrow the error, so calling component is able to display the error
-				throw new Error(error.error.message); 
+				throw new Error("Login fehlgeschlagen."); 
 			});
 
 		// If login was successful, store the received authentication token
-		console.log(result);
-		if (result) {
-			localStorage.setItem(this.authTokenKey, JSON.stringify(result));
+		const token = (result as any).token as string;
+
+		if (token) {
+			localStorage.setItem(this.authTokenKey, JSON.stringify(token));
 			this.router.navigate(["/"]);
 		}
 	}

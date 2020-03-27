@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UserControllerService, UserDto } from "../../../../api";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -11,20 +11,20 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class CreateComponent implements OnInit {
 
 	form: FormGroup;
+	roles: UserDto.RoleEnum;
 
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,
 				private snackbar: MatSnackBar) {
 		this.form = this.fb.group({
-			username: [""],
+			username: ["", Validators.required],
 			passwordDto: this.fb.group({
 				oldPassword: [""],
-				newPassword: [""]
+				newPassword: ["", Validators.required]
 			}),
 			settings: this.fb.group({
-				facility: [""],
+				facility: ["", Validators.required],
 				ordererInfo: this.fb.group({
-					ordererInfo: [""],
 					firstname: [""],
 					lastname: [""],
 					lanr: [""],
@@ -49,6 +49,7 @@ export class CreateComponent implements OnInit {
 
 	onSave(): void {
 		const user: UserDto = this.form.value;
+		console.log(user);
 		this.userService.addLocalUser(user).subscribe(
 			result => this.snackbar.open("Nutzer wurde erfolgreich angelegt!", "OK", { duration: 3000 }),
 			error => {

@@ -1,3 +1,8 @@
+#btn-add-user {
+	margin-left: 8px;
+	align-content: center;
+}
+
 #btn-add-user a {
 	text-decoration: none; /* no underline */
 	color: white;
