@@ -108,9 +108,7 @@
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Geburtsdatum</mat-label>
-				<input matInput [matDatepicker]="picker" formControlName="bday" required>
-				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-				<mat-datepicker #picker></mat-datepicker>
+				<input matInput formControlName="bday" required>
 				<mat-error></mat-error>
 			</mat-form-field>
 	
@@ -210,6 +208,6 @@
 	</mat-card>
 
 	<mat-checkbox>Ich habe die Hinweise zum <a href="">Datenschutz</a> gelesen und akzeptiere diese.</mat-checkbox><br>
-	<button mat-raised-button color="accent">Senden</button>
+	<button mat-raised-button color="accent" (click)="onSave()">Senden</button>
 
 </form>

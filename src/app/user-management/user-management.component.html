@@ -5,7 +5,7 @@
 			<a [routerLink]="['create']" routerLinkActive="router-link-active">Nutzer hinzufügen</a>
 		</button>
 	</mat-card-title>
-	<mat-form-field>
+	<mat-form-field id="filter">
 		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 	</mat-form-field>
 
@@ -13,8 +13,8 @@
 		<table mat-table [dataSource]="dataSource" matSort>
 			<!-- Username Column -->
 			<ng-container matColumnDef="username">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>Nutzername</th>
-				<td mat-cell *matCellDef="let row"> <a [routerLink]="[ 'edit', row.username ]">{{row.username}}</a> </td>
+				<th id="th-username" mat-header-cell *matHeaderCellDef mat-sort-header>Nutzername</th>
+				<td mat-cell *matCellDef="let row"> <a class="link-username" [routerLink]="[ 'edit', row.username ]">{{row.username}}</a> </td>
 			</ng-container>
 
 			<!-- Role Column -->

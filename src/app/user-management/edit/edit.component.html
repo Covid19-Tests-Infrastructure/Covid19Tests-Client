@@ -1,7 +1,7 @@
 <form class="form-container" [formGroup]="form">		
 
 	<mat-card id="create-user-card" class="form-card mat-elevation-z4">
-		<mat-card-title>Nutzer erstellen</mat-card-title>
+		<mat-card-title>Nutzer ändern</mat-card-title>
 
 		<mat-form-field floatLabel="auto" class="form-field">
 			<mat-label>Nutzername</mat-label>
@@ -18,7 +18,7 @@
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Neues Passwort</mat-label>
-				<input matInput formControlName="newPassword" required>
+				<input matInput formControlName="newPassword">
 				<mat-error></mat-error>
 			</mat-form-field>
 		</div>
@@ -110,7 +110,7 @@
 		</mat-radio-group>
 		<mat-error></mat-error>
 
-		<button mat-raised-button color="accent" (click)="onSave()">Erstellen</button>
+		<button mat-raised-button color="accent" (click)="onSave()">Speichern</button>
 
 	</mat-card>
 

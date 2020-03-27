@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import { environment } from "../environments/environment";
 
 import { AppComponent } from "./app.component";
@@ -15,7 +15,7 @@ import { AuthModule } from "./auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
 import { CovidTestModule } from "./covid-test/covid-test.module";
 import { ApiModule, BASE_PATH } from "../../api";
-import { MatNativeDateModule } from "@angular/material/core";
+import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { HomeComponent } from "./home/home.component";
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
@@ -50,7 +50,9 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 		CovidTestModule
 	],
 	providers: [
-		{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }
+		{ provide: BASE_PATH, useValue: environment.API_BASE_PATH },
+		{ provide: LOCALE_ID, useValue: "de" },
+		{ provide: MAT_DATE_LOCALE, useValue: "de" }
 	],
 	bootstrap: [AppComponent]
 })

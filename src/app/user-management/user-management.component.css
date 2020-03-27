@@ -7,3 +7,16 @@
 	text-decoration: none; /* no underline */
 	color: white;
 }
+
+.link-username {
+	text-decoration: none;
+	color: inherit;
+}
+
+#th-username {
+	width: 150px;
+}
+
+#filter {
+	width: 100%;
+}

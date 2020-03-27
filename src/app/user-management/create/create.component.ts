@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UserControllerService, UserDto } from "../../../../api";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-create",
@@ -15,7 +16,8 @@ export class CreateComponent implements OnInit {
 
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,
-				private snackbar: MatSnackBar) {
+				private snackbar: MatSnackBar,
+				private router: Router) {
 		this.form = this.fb.group({
 			username: ["", Validators.required],
 			passwordDto: this.fb.group({
@@ -41,6 +43,7 @@ export class CreateComponent implements OnInit {
 				}),
 			}),
 			role: [""],
+			isActive: [""]
 		});
 	}
 
@@ -51,7 +54,10 @@ export class CreateComponent implements OnInit {
 		const user: UserDto = this.form.value;
 		console.log(user);
 		this.userService.addLocalUser(user).subscribe(
-			result => this.snackbar.open("Nutzer wurde erfolgreich angelegt!", "OK", { duration: 3000 }),
+			result => {
+				this.snackbar.open("Nutzer wurde erfolgreich angelegt!", "OK", { duration: 3000 });
+				this.router.navigate(["/users"]);
+			},
 			error => {
 				console.log(error);
 				this.snackbar.open("Fehler beim Erstellen des Nutzers.", "OK", { duration: 3000 });

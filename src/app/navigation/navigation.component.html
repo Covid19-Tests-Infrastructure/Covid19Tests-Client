@@ -15,15 +15,24 @@
 			<a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
 				<mat-icon>home</mat-icon>Home
 			</a>
-			<a mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
+
+			<button *ngIf="!isLoggedIn()" (click)="logout()">
+				<a mat-list-item>
+					<mat-icon>perm_identity</mat-icon>
+				</a>
+			</button>
+
+			<a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
 				<mat-icon>account_box</mat-icon>Login
 			</a>
-			<a mat-list-item [routerLink]="['/covid-test']" routerLinkActive="router-link-active">
+			
+			<a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/covid-test']" routerLinkActive="router-link-active">
 				<mat-icon>add_shopping_cart</mat-icon>Covid-Test
 			</a>
-			<a mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
+			<a *ngIf="isLoggedIn()"	mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
 				<mat-icon>supervisor_account</mat-icon>Nutzerverwaltung
 			</a>
+			
 		</mat-nav-list>
 	</mat-sidenav>
 
