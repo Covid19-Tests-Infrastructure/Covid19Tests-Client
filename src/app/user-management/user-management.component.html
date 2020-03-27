@@ -1,9 +1,12 @@
 <mat-card class="mat-elevation-z4">
 	<mat-card-title>
 		Nutzerverwaltung
-		<button mat-raised-button color="accent" id="btn-add-user">
-			<a [routerLink]="['create']" routerLinkActive="router-link-active">Nutzer hinzufügen</a>
-		</button>
+			<a [routerLink]="['create']" routerLinkActive="router-link-active">
+				<button mat-raised-button color="accent" id="btn-add-user">
+					Nutzer hinzufügen
+				</button>
+			</a>
+		
 	</mat-card-title>
 	<mat-form-field id="filter">
 		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" autocomplete="off">

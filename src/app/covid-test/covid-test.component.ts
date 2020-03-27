@@ -71,7 +71,7 @@ export class CovidTestComponent implements OnInit {
 			info: this.fb.group({
 				diagnose: ["", Validators.required],
 				rkiCrit: [this.rkiCritEnum.NOTHING, Validators.required],
-				rkiReason: ["", Validators.required]
+				rkiReason: [""]
 			}),
 		});
 	}
