@@ -106,16 +106,12 @@
 				<mat-error></mat-error>
 			</mat-form-field>
 
-			<mat-form-field floatLabel="auto" class="form-field">
-				<mat-label>Geschlecht</mat-label>
-				<input matInput formControlName="gender" required [matAutocomplete]="autoGender">
-				<mat-error></mat-error>
-				<mat-autocomplete #autoGender="matAutocomplete">
-					<mat-option *ngFor="let option of genderAutoComplete" [value]="option">
-					  {{ option }}
-					</mat-option>
-				</mat-autocomplete>
-			</mat-form-field>
+			<label><strong>Geschlecht</strong></label>
+			<mat-radio-group class="radio-group" formControlName="gender">
+				<mat-radio-button [value]="genderEnum.M">Männlich</mat-radio-button>
+				<mat-radio-button [value]="genderEnum.W">Weiblich</mat-radio-button>
+				<mat-radio-button [value]="genderEnum.D">Divers</mat-radio-button>
+			</mat-radio-group>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Geburtsdatum</mat-label>

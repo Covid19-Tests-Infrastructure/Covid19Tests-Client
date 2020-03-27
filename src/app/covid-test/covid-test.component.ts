@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Covid19Info, FormDto, FormControllerService, AuthControllerService } from "../../../api";
+import { Covid19Info, PatientDto, FormDto, FormControllerService, AuthControllerService } from "../../../api";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 
@@ -14,6 +14,7 @@ export class CovidTestComponent implements OnInit {
 	form: FormGroup;
 	acceptCheckbox: false;
 
+	genderEnum = PatientDto.GenderEnum;
 	rkiCritEnum = Covid19Info.RkiCritEnum;
 	organisationAutoComplete = [
 		"Polizei", 
@@ -28,12 +29,7 @@ export class CovidTestComponent implements OnInit {
 		"Familienangehöriger",
 		"Rentner"
 	];
-	genderAutoComplete = [
-		"männlich",
-		"weiblich",
-		"divers"
-	];
-
+	
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
 				private covidTestOrderService: FormControllerService,

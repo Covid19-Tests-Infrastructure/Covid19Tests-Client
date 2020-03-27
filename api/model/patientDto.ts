@@ -15,7 +15,7 @@ export interface PatientDto {
     occupationGroup: string;
     firstname: string;
     lastname: string;
-    gender: string;
+    gender: PatientDto.GenderEnum;
     bday: string;
     address?: AddressDto;
     phoneNumber: string;
@@ -23,4 +23,12 @@ export interface PatientDto {
     personalHealthCareNumber: string;
     insuranceType: string;
     mobile: boolean;
+}
+export namespace PatientDto {
+    export type GenderEnum = 'M' | 'W' | 'D';
+    export const GenderEnum = {
+        M: 'M' as GenderEnum,
+        W: 'W' as GenderEnum,
+        D: 'D' as GenderEnum
+    };
 }
