@@ -21,11 +21,15 @@
 			<a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
 				<mat-icon>account_box</mat-icon>Login
 			</a>
+
+			<a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/users/edit', getloggedInUser()?.username]" routerLinkActive="router-link-active">
+				<mat-icon>person</mat-icon>Mein Account
+			</a>
 			
 			<a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/covid-test']" routerLinkActive="router-link-active">
 				<mat-icon>assignment</mat-icon>COVID-19-Test
 			</a>
-			<a *ngIf="isLoggedIn()"	mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
+			<a *ngIf="isLoggedIn() && getloggedInUser()?.role === 'ADMIN'" mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
 				<mat-icon>supervisor_account</mat-icon>Nutzerverwaltung
 			</a>
 

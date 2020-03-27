@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AuthService } from "../auth/services/auth.service";
+import { UserDto } from "../../../api";
 
 @Component({
 	selector: "app-navigation",
@@ -8,7 +9,13 @@ import { AuthService } from "../auth/services/auth.service";
 })
 export class NavigationComponent {
 
+	loggedInUser: UserDto;
+
 	constructor(private authService: AuthService) { }
+
+	getloggedInUser() {
+		return this.authService.getUserSettings();
+	}
 
 	isLoggedIn(): boolean {
 		return this.authService.isLoggedIn();

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { AuthControllerService } from "../../../../api";
+import { AuthControllerService, UserDto } from "../../../../api";
 
 @Injectable({
 	providedIn: "root"
@@ -9,6 +9,7 @@ import { AuthControllerService } from "../../../../api";
 export class AuthService {
 
 	private readonly authTokenKey = "authToken";
+	private readonly userSettingsKey = "userSettings";
 
 	constructor(private router: Router,
 				private authenticationService: AuthControllerService,
@@ -27,6 +28,12 @@ export class AuthService {
 
 		if (token) {
 			localStorage.setItem(this.authTokenKey, token);
+
+			this.authenticationService.isTokenValid().subscribe(
+				result => localStorage.setItem(this.userSettingsKey, JSON.stringify(result)),
+				error => console.log(error, "Failed to load user settings.")
+			);
+
 			this.router.navigate(["/covid-test"]);
 		}
 	}
@@ -50,6 +57,10 @@ export class AuthService {
 	 */
 	getAccessToken(): string {
 		return localStorage.getItem(this.authTokenKey);
+	}
+
+	getUserSettings(): UserDto {
+		return JSON.parse(localStorage.getItem(this.userSettingsKey)) as UserDto;
 	}
 
 }
