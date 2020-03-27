@@ -32,7 +32,6 @@ export class EditComponent implements OnInit {
 			settings: this.fb.group({
 				facility: [""],
 				ordererInfo: this.fb.group({
-					ordererInfo: [""],
 					firstname: [""],
 					lastname: [""],
 					lanr: [""],
@@ -76,7 +75,7 @@ export class EditComponent implements OnInit {
 		if (!updatedUser.passwordDto?.newPassword && !updatedUser.passwordDto?.oldPassword) {
 			updatedUser.passwordDto = null;
 		}
-
+		console.log(updatedUser);
 		this.userService.editLocalUser(updatedUser, this.username).subscribe(
 			result => {
 				result.passwordDto = {

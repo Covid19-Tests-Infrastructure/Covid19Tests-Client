@@ -13,7 +13,11 @@ export class NavigationComponent {
 
 	constructor(private authService: AuthService) { }
 
-	getloggedInUser() {
+	getUsername(): string {
+		return this.authService.getUserSettings().username ?? null;
+	}
+
+	getLoggedInUser(): UserDto {
 		return this.authService.getUserSettings();
 	}
 

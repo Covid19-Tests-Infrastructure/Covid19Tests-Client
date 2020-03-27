@@ -13,7 +13,7 @@ export class UserManagementComponent implements OnInit {
 
 	users: UserDto[] = [];
 
-	displayedColumns: string[] = ["username", "firstname", "lastname", "email", "role"];
+	displayedColumns: string[] = ["username", "firstname", "lastname", "email", "facility", "role"];
 	dataSource: MatTableDataSource<UserDto>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
