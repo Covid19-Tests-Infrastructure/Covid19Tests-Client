@@ -28,6 +28,11 @@ export class CovidTestComponent implements OnInit {
 		"Familienangehöriger",
 		"Rentner"
 	];
+	genderAutoComplete = [
+		"männlich",
+		"weiblich",
+		"divers"
+	];
 
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
@@ -55,6 +60,7 @@ export class CovidTestComponent implements OnInit {
 				occupationGroup: ["", Validators.required],
 				firstname: ["", Validators.required],
 				lastname: ["", Validators.required],
+				gender: ["", Validators.required],
 				bday: ["", Validators.required],
 				address: this.fb.group({
 					street: ["", Validators.required],
@@ -83,6 +89,11 @@ export class CovidTestComponent implements OnInit {
 			},
 			error => console.log(error)
 		);
+	}
+
+	test(): void {
+		const formDto: FormDto = this.form.value;
+		console.log(formDto);
 	}
 
 	onSave(): void {

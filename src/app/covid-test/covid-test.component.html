@@ -105,6 +105,17 @@
 				<input matInput formControlName="lastname" required>
 				<mat-error></mat-error>
 			</mat-form-field>
+
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Geschlecht</mat-label>
+				<input matInput formControlName="gender" required [matAutocomplete]="autoGender">
+				<mat-error></mat-error>
+				<mat-autocomplete #autoGender="matAutocomplete">
+					<mat-option *ngFor="let option of genderAutoComplete" [value]="option">
+					  {{ option }}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Geburtsdatum</mat-label>
@@ -211,7 +222,7 @@
 		</mat-form-field>
 
 	</mat-card>
-
+	<button (click)="test()">TEST</button>
 	<mat-checkbox >Ich habe die Hinweise zum <a href="">Datenschutz</a> gelesen und akzeptiere diese.</mat-checkbox><br>
 	<button mat-raised-button color="accent" (click)="onSave()" [disabled]="form.invalid">Senden</button>
 

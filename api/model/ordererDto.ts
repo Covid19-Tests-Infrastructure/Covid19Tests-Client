@@ -12,12 +12,12 @@
 import { AddressDto } from './addressDto';
 
 export interface OrdererDto { 
-    firstname?: string;
-    lastname?: string;
+    firstname: string;
+    lastname: string;
     lanr?: string;
     bsnr?: string;
-    address?: AddressDto;
-    phoneNumber?: string;
+    address: AddressDto;
+    phoneNumber: string;
     fax?: string;
-    email?: string;
+    email: string;
 }

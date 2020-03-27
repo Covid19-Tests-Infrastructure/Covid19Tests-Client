@@ -12,14 +12,15 @@
 import { AddressDto } from './addressDto';
 
 export interface PatientDto { 
-    occupationGroup?: string;
-    firstname?: string;
-    lastname?: string;
-    bday?: string;
+    occupationGroup: string;
+    firstname: string;
+    lastname: string;
+    gender: string;
+    bday: string;
     address?: AddressDto;
-    phoneNumber?: string;
+    phoneNumber: string;
     healthCareOrganisationNumber?: string;
-    personalHealthCareNumber?: string;
-    insuranceType?: string;
-    mobile?: boolean;
+    personalHealthCareNumber: string;
+    insuranceType: string;
+    mobile: boolean;
 }
