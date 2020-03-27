@@ -28,6 +28,8 @@
 #drawer-toggle {
 	position: fixed;
 	top: 0;
+	z-index: 1;
+	margin-left: -12px;
 }
 
 .sidenav .mat-toolbar {
