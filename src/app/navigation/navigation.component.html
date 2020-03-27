@@ -56,8 +56,8 @@
 		<!-- Add Content Here -->
 		<div class="background-container">
 			<button mat-icon-button type="button" id="drawer-toggle" (click)="drawer.toggle()">
-				<mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
-				<mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+				<mat-icon *ngIf="drawer.opened">keyboard_arrow_left</mat-icon>
+				<mat-icon *ngIf="!drawer.opened">keyboard_arrow_right</mat-icon>
 			</button>
 			<div class="content-container">
 				<router-outlet></router-outlet>
