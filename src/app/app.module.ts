@@ -17,8 +17,8 @@ import { CovidTestModule } from "./covid-test/covid-test.module";
 import { ApiModule, BASE_PATH } from "../../api";
 import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { HomeComponent } from "./home/home.component";
-import { ImprintComponent } from './imprint/imprint.component';
-import { PrivacyComponent } from './privacy/privacy.component';
+import { ImprintComponent } from "./imprint/imprint.component";
+import { PrivacyComponent } from "./privacy/privacy.component";
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
