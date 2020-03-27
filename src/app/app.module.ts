@@ -17,6 +17,7 @@ import { CovidTestModule } from "./covid-test/covid-test.module";
 import { ApiModule, BASE_PATH } from "../../api";
 import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { HomeComponent } from "./home/home.component";
+import { ImprintComponent } from './imprint/imprint.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -26,7 +27,8 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	declarations: [
 		AppComponent,
 		NavigationComponent,
-		HomeComponent
+		HomeComponent,
+		ImprintComponent
 	],
 	imports: [
 		BrowserModule,

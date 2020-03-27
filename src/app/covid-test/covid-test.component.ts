@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Covid19Info, AddressDto, OrdererDto, PatientDto, FormDto, FormControllerService, AuthControllerService } from "../../../api";
 import { Observable } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-covid-test",
@@ -31,6 +32,7 @@ export class CovidTestComponent implements OnInit {
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
 				private covidTestOrderService: FormControllerService,
+				private router: Router,
 				private snackbar: MatSnackBar) {
 
 		this.form = this.fb.group({
@@ -85,10 +87,11 @@ export class CovidTestComponent implements OnInit {
 
 	onSave(): void {
 		const formDto: FormDto = this.form.value;
-		this.covidTestOrderService.addFormular(null).subscribe(
+		this.covidTestOrderService.addFormular(formDto).subscribe(
 			result => {
 				console.log(result);
 				this.snackbar.open("Erfolg!", "OK", { duration: 3000 });
+				this.router.navigate(["/covid-test"]);
 			},
 			error => {
 				console.log(error);

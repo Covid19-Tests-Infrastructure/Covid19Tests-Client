@@ -30,6 +30,10 @@
 			<a *ngIf="isLoggedIn()"	mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
 				<mat-icon>supervisor_account</mat-icon>Nutzerverwaltung
 			</a>
+
+			<a mat-list-item [routerLink]="['/imprint']" routerLinkActive="router-link-active">
+				<mat-icon>info</mat-icon>Impressum
+			</a>
 			
 		</mat-nav-list>
 	</mat-sidenav>
