@@ -52,7 +52,6 @@ export class CreateComponent implements OnInit {
 
 	onSave(): void {
 		const user: UserDto = this.form.value;
-		console.log(user);
 		this.userService.addLocalUser(user).subscribe(
 			result => {
 				this.snackbar.open("Nutzer wurde erfolgreich angelegt!", "OK", { duration: 3000 });

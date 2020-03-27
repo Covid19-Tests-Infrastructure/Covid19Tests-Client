@@ -1,51 +1,60 @@
 #home-container {
-	padding: 50px;
+	max-width: 600px;
 	margin-left: auto;
 	margin-right: auto;
-	display: grid;
-	width: 80%;
-	grid-template-columns: repeat(5, 50%);
-	grid-column-gap: 48px;
-	grid-row-gap: 32px;
 }
 
 #logo-container {
-	grid-area: 1 / 1 / 2 / 2;
-}
-
-#container2 {
-	grid-area: 1 / 2 / 2 / 3;
-}
-
-#container3 { 
-	grid-area: 2 / 1 / 3 / 2;
 	margin-left: auto;
 	margin-right: auto;
+	max-width: 420px;
+	padding: 16px;
 }
 
-#container4 { 
-	grid-area: 2 / 2 / 3 / 3; 
+#title-container{
+	padding: 16px;
 }
 
-#btn-links { 
-	grid-area: 3 / 1 / 4 / 3; 
+#title-container h1 {
+	text-align: center;
+	margin-bottom: 0;
 }
 
-#btn-link-covid {
-	margin-right: 50px;
+#link-drk {
+	text-decoration: none;
+	color: inherit;
 }
 
-#btn-link-covid a {
-	text-decoration: none; /* no underline */
-	color: white;
+#anmeldung {
+	font-weight: 500;
 }
 
-#btn-links {
-	margin-left: auto;
-	margin-right: auto;
+#technische {
+	font-weight: 300;
 }
 
-#btn-links button {
-	height: 96px;
-	width: 256px;
+#drk {
+	font-weight: 500;
 }
+
+#btn-container {
+	display: flex;
+	justify-content: center;
+	padding: 16px;
+	margin-bottom: 16px;
+}
+
+#btn-container button {
+	width: 300px;
+	height: 48px;
+}
+
+#names-container {
+	display: flex;
+	font-weight: 400;
+	justify-content: center;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.500);
+}
+
+

@@ -56,7 +56,7 @@ export class CovidTestComponent implements OnInit {
 				occupationGroup: ["", Validators.required],
 				firstname: ["", Validators.required],
 				lastname: ["", Validators.required],
-				gender: ["", Validators.required],
+				gender: [this.genderEnum.M, Validators.required],
 				bday: ["", Validators.required],
 				address: this.fb.group({
 					street: ["", Validators.required],

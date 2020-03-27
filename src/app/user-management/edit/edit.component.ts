@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
 		if (!updatedUser.passwordDto?.newPassword && !updatedUser.passwordDto?.oldPassword) {
 			updatedUser.passwordDto = null;
 		}
-		console.log(updatedUser);
+		
 		this.userService.editLocalUser(updatedUser, this.username).subscribe(
 			result => {
 				result.passwordDto = {

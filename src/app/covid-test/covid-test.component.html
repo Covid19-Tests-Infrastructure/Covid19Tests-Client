@@ -11,37 +11,37 @@
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Vorname Besteller</mat-label>
 				<input matInput formControlName="firstname" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Nachname Besteller</mat-label>
 				<input matInput formControlName="lastname" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>LANR (Lebenslange Arztnummer</mat-label>
 				<input matInput formControlName="lanr">
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>BSNR (Betriebsstättennummer)</mat-label>
 				<input matInput formControlName="bsnr">
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Rückrufnummer</mat-label>
 				<input matInput formControlName="phoneNumber" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Fax</mat-label>
 				<input matInput formControlName="fax">
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
@@ -54,25 +54,25 @@
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Straße</mat-label>
 					<input matInput formControlName="street" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Hausnummer</mat-label>
 					<input matInput formControlName="hnumber" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>PLZ</mat-label>
 					<input matInput formControlName="zip" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Ort</mat-label>
 					<input matInput formControlName="ort" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 			</div>
 		</div>	
@@ -86,7 +86,7 @@
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Berufsgruppe / Organisation</mat-label>
 				<input matInput formControlName="occupationGroup" required [matAutocomplete]="autoOrga">
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				<mat-autocomplete #autoOrga="matAutocomplete">
 					<mat-option *ngFor="let option of organisationAutoComplete" [value]="option">
 					  {{ option }}
@@ -97,13 +97,13 @@
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Vorname</mat-label>
 				<input matInput formControlName="firstname" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Nachname</mat-label>
 				<input matInput formControlName="lastname" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 
 			<label>Geschlecht:</label>
@@ -116,25 +116,25 @@
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Geburtsdatum</mat-label>
 				<input matInput formControlName="bday" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Telefonnummer (vorzugweise Mobilfunknummer)</mat-label>
 				<input matInput formControlName="phoneNumber" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Krankenkasse bzw. Kostenträger</mat-label>
 				<input matInput formControlName="healthCareOrganisationNumber" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Versicherten-/ Kostenträgernummer</mat-label>
 				<input matInput formControlName="personalHealthCareNumber" required>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
@@ -145,7 +145,7 @@
 					  {{ option }}
 					</mat-option>
 				</mat-autocomplete>
-				<mat-error></mat-error>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
 			</mat-form-field>
 	
 			<label><strong>Mobilität des Patienten</strong></label>
@@ -158,25 +158,25 @@
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Straße</mat-label>
 					<input matInput formControlName="street" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Hausnummer</mat-label>
 					<input matInput formControlName="hnumber" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>PLZ</mat-label>
 					<input matInput formControlName="zip" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 		
 				<mat-form-field floatLabel="auto" class="form-field">
 					<mat-label>Ort</mat-label>
 					<input matInput formControlName="ort" required>
-					<mat-error></mat-error>
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
 				</mat-form-field>
 			</div>
 		</div>
@@ -189,7 +189,7 @@
 		<mat-form-field floatLabel="auto" class="form-field">
 			<mat-label>Symptome/Diagnosen</mat-label>
 			<textarea matInput formControlName="diagnose" rows="5" required></textarea>
-			<mat-error></mat-error>
+			<mat-error>Feld muss ausgefüllt werden.</mat-error>
 		</mat-form-field>
 
 		<label><strong>RKI-Kriterium</strong></label>
@@ -214,7 +214,7 @@
 		<mat-form-field floatLabel="auto" class="form-field">
 			<mat-label>Begründung</mat-label>
 			<textarea matInput formControlName="rkiReason" rows="5"></textarea>
-			<mat-error></mat-error>
+			<mat-error>Feld muss ausgefüllt werden.</mat-error>
 		</mat-form-field>
 
 	</mat-card>

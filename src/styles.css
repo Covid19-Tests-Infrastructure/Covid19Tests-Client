@@ -63,9 +63,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .radio-group {
 	display: flex;
 	flex-direction: column;
-	margin: 15px 0;
 }
 
 mat-radio-button {
 	margin: 5px;
+	white-space: normal !important;
 }

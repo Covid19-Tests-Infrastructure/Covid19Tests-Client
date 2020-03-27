@@ -25,6 +25,11 @@
 	height: 48px;
 }
 
+#drawer-toggle {
+	position: fixed;
+	top: 0;
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }
