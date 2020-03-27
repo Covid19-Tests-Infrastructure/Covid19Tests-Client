@@ -27,7 +27,7 @@ export class AuthService {
 
 		if (token) {
 			localStorage.setItem(this.authTokenKey, token);
-			this.router.navigate(["/"]);
+			this.router.navigate(["/covid-test"]);
 		}
 	}
 
