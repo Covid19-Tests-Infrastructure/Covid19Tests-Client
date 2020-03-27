@@ -91,7 +91,7 @@ export class CovidTestComponent implements OnInit {
 			result => {
 				console.log(result);
 				this.snackbar.open("Erfolg!", "OK", { duration: 3000 });
-				this.router.navigate(["/covid-test"]);
+				this.router.navigate(["/"]);
 			},
 			error => {
 				console.log(error);
