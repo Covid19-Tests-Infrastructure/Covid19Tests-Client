@@ -13,7 +13,9 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AuthModule } from "./auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
-import { CovidTestModule } from './covid-test/covid-test.module';
+import { CovidTestModule } from "./covid-test/covid-test.module";
+import { ApiModule, BASE_PATH } from "../../api";
+import { MatNativeDateModule } from "@angular/material/core";
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -29,6 +31,8 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 		HttpClientModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
+		ApiModule,
+		MatNativeDateModule,
 		TranslateModule.forRoot({
 			defaultLanguage: "de",
 			loader: {
@@ -43,7 +47,9 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 		AuthModule,
 		CovidTestModule
 	],
-	providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
+	providers: [
+		{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import { NgModule } from "@angular/core";
+import { SharedModule } from "../shared/shared.module";
+import { CovidTestComponent } from "./covid-test.component";
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+	declarations: [CovidTestComponent],
+	imports: [
+		SharedModule
+	]
 })
 export class CovidTestModule { }

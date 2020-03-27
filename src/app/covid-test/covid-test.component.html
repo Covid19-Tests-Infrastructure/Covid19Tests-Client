@@ -1,0 +1,215 @@
+<form id="form-container" [formGroup]="form">		
+
+	<mat-card class="form-card mat-elevation-z2">
+		<mat-card-title>Bestellung: Covid-19-Test</mat-card-title>
+	</mat-card>
+
+	<mat-card id="orderer-card" class="form-card mat-elevation-z4">
+		<mat-card-title>Ärztlicher Besteller (auch Empfänger der Rückmeldung)</mat-card-title>
+
+		<div formGroupName="orderer">
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Vorname Besteller</mat-label>
+				<input matInput formControlName="firstname" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Nachname Besteller</mat-label>
+				<input matInput formControlName="lastname" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>LANR (Lebenslange Arztnummer</mat-label>
+				<input matInput formControlName="lanr" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>BSNR (Betriebsstättennummer)</mat-label>
+				<input matInput formControlName="bsnr">
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Rückrufnummer</mat-label>
+				<input matInput formControlName="phoneNumber" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Fax</mat-label>
+				<input matInput formControlName="fax">
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Email</mat-label>
+				<input matInput formControlName="email" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+
+			<div formGroupName="address" id="address-form">
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Straße</mat-label>
+					<input matInput formControlName="street" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Hausnummer</mat-label>
+					<input matInput formControlName="hnumber" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>PLZ</mat-label>
+					<input matInput formControlName="zip" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Ort</mat-label>
+					<input matInput formControlName="ort" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+			</div>
+		</div>	
+
+	</mat-card>
+
+	<mat-card class="form-card mat-elevation-z4">
+		<mat-card-title>Patientendaten</mat-card-title>
+
+		<div formGroupName="patient">
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Berufsgruppe / Organisation</mat-label>
+				<input matInput formControlName="occupationGroup" required [matAutocomplete]="auto">
+				<mat-error></mat-error>
+				<mat-autocomplete #auto="matAutocomplete">
+					<mat-option *ngFor="let option of organisationAutoComplete" [value]="option">
+					  {{ option }}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Vorname</mat-label>
+				<input matInput formControlName="firstname" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Nachname</mat-label>
+				<input matInput formControlName="lastname" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Geburtsdatum</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="bday" required>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Telefonnummer (vorzugweise Mobilfunknummer)</mat-label>
+				<input matInput formControlName="phoneNumber" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Krankenkasse bzw. Kostenträger</mat-label>
+				<input matInput formControlName="healthCareOrganisationNumber" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Versicherten-/ Kostenträgernummer</mat-label>
+				<input matInput formControlName="personalHealthCareNumber" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Versichtertenart</mat-label>
+				<input matInput formControlName="insuranceType" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+	
+			<label><strong>Mobilität des Patienten</strong></label>
+			<mat-radio-group class="radio-group" formControlName="mobile">
+				<mat-radio-button [value]="true">Der Patient ist mit dem eigenen PKW mobil.</mat-radio-button>
+				<mat-radio-button [value]="false">Der Patient ist nicht mit dem eigenen PKW mobil. (Hausbesuche nur innerhalb der Stadt oder Region Hannover möglich)</mat-radio-button>
+			</mat-radio-group>
+
+			<div formGroupName="address">
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Straße</mat-label>
+					<input matInput formControlName="street" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Hausnummer</mat-label>
+					<input matInput formControlName="hnumber" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>PLZ</mat-label>
+					<input matInput formControlName="zip" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Ort</mat-label>
+					<input matInput formControlName="ort" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+
+	</mat-card>
+
+	<mat-card formGroupName="info" class="form-card mat-elevation-z4">
+		<mat-card-title>Weitere Auftragsdaten</mat-card-title>
+
+		<mat-form-field floatLabel="auto" class="form-field">
+			<mat-label>Symptome/Diagnosen</mat-label>
+			<textarea matInput formControlName="diagnose" rows="5"></textarea>
+			<mat-error></mat-error>
+		</mat-form-field>
+
+		<label><strong>RKI-Kriterium</strong></label>
+		<mat-radio-group class="radio-group" formControlName="rkiCrit">
+			<mat-radio-button [value]="rkiCritEnum.RKI1">
+				RKI-Kriterium 1 (Eintrag des Kontakdatums mit bestätigten COVID-19-Patienten ist im Begründungsfeld erforderlich)
+			</mat-radio-button>
+			<mat-radio-button [value]="rkiCritEnum.RKI2">
+				RKI-Kriterium 2 (Eintrag ob klinischer oder radiologischer Hinweis auf virale Pneumonie ist im Begründungsfeld erforderlich)
+			</mat-radio-button>
+			<mat-radio-button [value]="rkiCritEnum.RKI3">
+				RKI-Kriterium 3 (Eintrag der Tätigkeit (Pflegeeinrichtung oder Krankenhaus) ist im Begründungsfeld erforderlich)
+			</mat-radio-button>
+			<mat-radio-button [value]="rkiCritEnum.RKI4">
+				RKI-Kriterium 4 (Begründungsfeld erforderlich)
+			</mat-radio-button>
+			<mat-radio-button [value]="rkiCritEnum.NOTHING">
+				keine Angabe
+			</mat-radio-button>
+		</mat-radio-group>
+
+		<mat-form-field floatLabel="auto" class="form-field">
+			<mat-label>Begründung</mat-label>
+			<textarea matInput formControlName="rkiReason" rows="5"></textarea>
+			<mat-error></mat-error>
+		</mat-form-field>
+
+	</mat-card>
+
+	<mat-checkbox>Ich habe die Hinweise zum <a href="">Datenschutz</a> gelesen und akzeptiere diese.</mat-checkbox><br>
+	<button mat-raised-button color="accent">Senden</button>
+
+</form>

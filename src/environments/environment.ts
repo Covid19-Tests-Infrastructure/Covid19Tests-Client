@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	API_BASE_PATH: "http://localhost:3000"
+	API_BASE_PATH: "http://172.27.238.25:8080"
 };
 
 /*

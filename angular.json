@@ -160,6 +160,46 @@
           }
         }
       }
+    },
+    "covid-test-api": {
+      "projectType": "library",
+      "root": "projects/covid-test-api",
+      "sourceRoot": "projects/covid-test-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/covid-test-api/tsconfig.lib.json",
+            "project": "projects/covid-test-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/covid-test-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/covid-test-api/src/test.ts",
+            "tsConfig": "projects/covid-test-api/tsconfig.spec.json",
+            "karmaConfig": "projects/covid-test-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/covid-test-api/tsconfig.lib.json",
+              "projects/covid-test-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "covid-tests-client"

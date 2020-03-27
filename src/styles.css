@@ -3,27 +3,24 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* body::-webkit-scrollbar {
-	width: 6px;
+*::-webkit-scrollbar {
+	width: 8px;
 }
-
-body::-webkit-scrollbar-track {
-	background-color: rgba(0, 0, 0, 0.342);
+*::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0.233);
 }
-
-body::-webkit-scrollbar-thumb {
-	background-color: red;
-} */
+*::-webkit-scrollbar-thumb {
+	background-color: grey;
+}
 
 .content-container {
-	padding-top: 56px;
-	margin-top: 0.5rem;
+	padding-top: 0.5rem;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }
 
 .background-container {
-	background-color:rgb(224, 224, 224);
+	/* background-color:rgb(224, 224, 224); */
 	height: 100%;
 	width: 100%;
 }

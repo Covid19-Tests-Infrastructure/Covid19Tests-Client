@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	API_BASE_PATH: "http://localhost:3000"
+	API_BASE_PATH: "https://api.covid19.drk-hannover.de"
 };

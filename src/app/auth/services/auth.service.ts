@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { AuthControllerService } from "../../../../api";
 
 @Injectable({
 	providedIn: "root"
@@ -9,25 +10,24 @@ export class AuthService {
 
 	private readonly authTokenKey = "authToken";
 
-	constructor(private authenticationService: AuthenticationService,
-				private router: Router) { }
+	constructor(private router: Router,
+				private authenticationService: AuthControllerService,
+				private http: HttpClient) { }
 
-	async login(authCredentials: AuthCredentialsDto): Promise<void> {
-		const result = await this.authenticationService.login(authCredentials).toPromise()
-			.catch(error => { 
+	async login(username: string, password: string): Promise<void> {
+		const result = await this.authenticationService.authenticate(username, password).toPromise()
+			.catch(error => {
+				console.log(error);
 				// Rethrow the error, so calling component is able to display the error
 				throw new Error(error.error.message); 
 			});
 
 		// If login was successful, store the received authentication token
+		console.log(result);
 		if (result) {
 			localStorage.setItem(this.authTokenKey, JSON.stringify(result));
 			this.router.navigate(["/"]);
 		}
-	}
-
-	register(authCredentials: AuthCredentialsDto): Observable<any> {
-		return this.authenticationService.register(authCredentials);
 	}
 
 	logout(): void {
@@ -48,13 +48,7 @@ export class AuthService {
 	 * ("Bearer <Token>") to authenticate the user for requests to the server.
 	 */
 	getAccessToken(): string {
-		return this.getAuthToken()?.accessToken;
+		return localStorage.getItem(this.authTokenKey);
 	}
 
-	/**
-	 * Returns the stored AuthToken, containing information about the user's id, email, role and rights.
-	 */
-	getAuthToken(): AuthTokenDto {
-		return localStorage.getItem(this.authTokenKey) as unknown as AuthTokenDto;
-	}
 }

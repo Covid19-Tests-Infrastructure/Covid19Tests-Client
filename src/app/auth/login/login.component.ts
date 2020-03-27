@@ -8,15 +8,14 @@ import { AuthService } from "../services/auth.service";
 })
 export class LoginComponent {
 
-	email = "max.mustermann@test.com";
-	password = "testpassword";
+	username = "lukas";
+	password = "slayer";
 	errorMessage: string;
 
 	constructor(private authService: AuthService) { }
 
 	async login(): Promise<void> {
-		const authCredentials = { email: this.email, password: this.password };
-		await this.authService.login(authCredentials)
+		await this.authService.login(this.username, this.password)
 			.catch(error => {
 				this.errorMessage = error;
 			});
