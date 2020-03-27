@@ -45,6 +45,7 @@ export class EditComponent implements OnInit {
 				}),
 			}),
 			role: [""],
+			isActive: [""]
 		});
 
 	}
@@ -52,13 +53,24 @@ export class EditComponent implements OnInit {
 	ngOnInit(): void {
 		this.username = this.route.snapshot.paramMap.get("username");
 		this.userService.getUser(this.username).subscribe(
-			result => this.form.patchValue(result),
+			result => {
+				result.passwordDto = {
+					newPassword: null,
+					oldPassword: null
+				};
+				this.form.patchValue(result);
+			},
 			error => console.log(error)
 		);
 	}
 
 	onSave(): void {
 		const updatedUser: UserDto = this.form.value;
+
+		if (!updatedUser.passwordDto?.newPassword && !updatedUser.passwordDto?.oldPassword) {
+			updatedUser.passwordDto = null;
+		}
+
 		this.userService.editLocalUser(updatedUser, this.username).subscribe(
 			result => {
 				this.form.patchValue(result);

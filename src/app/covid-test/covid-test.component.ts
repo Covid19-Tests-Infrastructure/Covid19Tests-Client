@@ -76,7 +76,9 @@ export class CovidTestComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.authentication.isTokenValid().subscribe(
-			result => this.form.patchValue(result),
+			result => {
+				this.form.patchValue({ orderer: result.settings.ordererInfo });
+			},
 			error => console.log(error)
 		);
 	}

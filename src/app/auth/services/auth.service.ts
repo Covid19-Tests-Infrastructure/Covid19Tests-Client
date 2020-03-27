@@ -26,7 +26,7 @@ export class AuthService {
 		const token = (result as any).token as string;
 
 		if (token) {
-			localStorage.setItem(this.authTokenKey, JSON.stringify(token));
+			localStorage.setItem(this.authTokenKey, token);
 			this.router.navigate(["/"]);
 		}
 	}
