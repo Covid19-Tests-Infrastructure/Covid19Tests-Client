@@ -3,11 +3,13 @@
 	<mat-card id="create-user-card" class="form-card mat-elevation-z4">
 		<mat-card-title>Nutzer ändern <button color="accent" id="btn-delete" mat-raised-button (click)="onDelete()">Löschen</button></mat-card-title>
 
-		<mat-form-field floatLabel="auto" class="form-field">
-			<mat-label>Nutzername</mat-label>
-			<input matInput formControlName="username" required>
-			<mat-error></mat-error>
-		</mat-form-field>
+		<ng-container *ngIf="isAdmin">
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Nutzername</mat-label>
+				<input matInput formControlName="username" required>
+				<mat-error></mat-error>
+			</mat-form-field>
+		</ng-container>
 		
 		<div formGroupName="passwordDto">
 			<mat-form-field floatLabel="auto" class="form-field">
@@ -24,11 +26,13 @@
 		</div>
 
 		<div formGroupName="settings">
-			<mat-form-field floatLabel="auto" class="form-field">
-				<mat-label>Facility</mat-label>
-				<input matInput formControlName="facility" required>
-				<mat-error></mat-error>
-			</mat-form-field>
+			<ng-container *ngIf="isAdmin">
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Facility</mat-label>
+					<input matInput formControlName="facility" required>
+					<mat-error></mat-error>
+				</mat-form-field>
+			</ng-container>
 	
 			<div formGroupName="ordererInfo">
 				<mat-form-field floatLabel="auto" class="form-field">
@@ -103,12 +107,14 @@
 
 		</div>
 		
-		<mat-label>Rolle</mat-label>
-		<mat-radio-group formControlName="role">
-			<mat-radio-button [value]="'DEFAULT'">DEFAULT</mat-radio-button>
-			<mat-radio-button [value]="'ADMIN'">ADMIN</mat-radio-button>
-		</mat-radio-group>
-		<mat-error></mat-error>
+		<ng-container *ngIf="isAdmin">
+			<mat-label>Rolle</mat-label>
+			<mat-radio-group formControlName="role">
+				<mat-radio-button [value]="'DEFAULT'">DEFAULT</mat-radio-button>
+				<mat-radio-button [value]="'ADMIN'">ADMIN</mat-radio-button>
+			</mat-radio-group>
+			<mat-error></mat-error>
+		</ng-container>
 
 		<button mat-raised-button color="accent" (click)="onSave()">Speichern</button>
 

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserControllerService, UserDto } from "../../../../api";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { AuthService } from "../../auth/services/auth.service";
 
 @Component({
 	selector: "app-edit",
@@ -13,9 +14,11 @@ export class EditComponent implements OnInit {
 
 	form: FormGroup;
 	username: string;
+	isAdmin: boolean;
 
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,
+				private authService: AuthService,
 				private route: ActivatedRoute,
 				private router: Router,
 				private snackbar: MatSnackBar) {
@@ -63,6 +66,8 @@ export class EditComponent implements OnInit {
 			},
 			error => console.log(error)
 		);
+
+		this.isAdmin = this.authService.getUserSettings()?.role === UserDto.RoleEnum.ADMIN;
 	}
 
 	onSave(): void {

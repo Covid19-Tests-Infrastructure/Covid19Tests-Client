@@ -7,7 +7,7 @@ import { EditComponent } from "./edit/edit.component";
 import { AdminGuard } from "../auth/guards/admin.guard";
 
 const routes: Routes = [
-	{ path: "create", component: CreateComponent, pathMatch: "full" },
+	{ path: "create", component: CreateComponent, pathMatch: "full", canActivate: [AdminGuard] },
 	{ path: "edit/:username", component: EditComponent, pathMatch: "full" },
 	{ path: "", component: UserManagementComponent, pathMatch: "full", canActivate: [AdminGuard] }
 ];
