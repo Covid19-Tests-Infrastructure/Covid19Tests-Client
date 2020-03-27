@@ -14,6 +14,17 @@
   background-color: #fafafa;
 }
 
+#sidenav-footer {
+	width: 240px;
+	position: fixed;
+	bottom: 0;
+}
+
+#drk-logo {
+	padding-left: 4px;
+	height: 48px;
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }

@@ -4,7 +4,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { MaterialModule } from "../material/material.module";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { AuthModule } from "../auth/auth.module";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @NgModule({
 	declarations: [PageNotFoundComponent],
@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 		AuthModule,
 		TranslateModule,
 		MaterialModule,
+		FormsModule,
 		ReactiveFormsModule
 	],
 	providers: [],

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Covid19Info, AddressDto, OrdererDto, PatientDto, FormDto, FormControllerService, AuthControllerService } from "../../../api";
-import { Observable } from "rxjs";
+import { Covid19Info, FormDto, FormControllerService, AuthControllerService } from "../../../api";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 
@@ -13,6 +12,8 @@ import { Router } from "@angular/router";
 export class CovidTestComponent implements OnInit {
 
 	form: FormGroup;
+	acceptCheckbox: false;
+
 	rkiCritEnum = Covid19Info.RkiCritEnum;
 	organisationAutoComplete = [
 		"Polizei", 
@@ -22,12 +23,11 @@ export class CovidTestComponent implements OnInit {
 		"Krankenhaus", 
 		"Arztpraxis"
 	];
-	filteredOptions: Observable<string[]>;
-
-	orderer: OrdererDto;
-	patient: PatientDto;
-	covid19info: Covid19Info;
-	address: AddressDto;
+	insuranceAutoComplete = [
+		"Mitglied",
+		"Familienangehöriger",
+		"Rentner"
+	];
 
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
@@ -39,8 +39,8 @@ export class CovidTestComponent implements OnInit {
 			orderer: this.fb.group({
 				firstname: ["", Validators.required],
 				lastname: ["", Validators.required],
-				lanr: ["", Validators.required],
-				bsnr: ["", Validators.required],
+				lanr: [""],
+				bsnr: [""],
 				address: this.fb.group({
 					street: ["", Validators.required],
 					zip: ["", Validators.required],
@@ -86,18 +86,20 @@ export class CovidTestComponent implements OnInit {
 	}
 
 	onSave(): void {
-		const formDto: FormDto = this.form.value;
-		this.covidTestOrderService.addFormular(formDto).subscribe(
-			result => {
-				console.log(result);
-				this.snackbar.open("Erfolg!", "OK", { duration: 3000 });
-				this.router.navigate(["/"]);
-			},
-			error => {
-				console.log(error);
-				this.snackbar.open("Fehler!", "OK", { duration: 3000 });
-			}
-		);
+		if (this.form.valid) {
+			const formDto: FormDto = this.form.value;
+			this.covidTestOrderService.addFormular(formDto).subscribe(
+				result => {
+					console.log(result);
+					this.snackbar.open("Anmeldung erfolgreich verschickt!", "OK", { duration: 3000 });
+					this.router.navigate(["/"]);
+				},
+				error => {
+					console.log(error);
+					this.snackbar.open("Fehler! Anmeldung konnte nicht verschickt werden.", "OK", { duration: 3000 });
+				}
+			);
+		}
 	}
 
 }

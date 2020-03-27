@@ -1,12 +1,34 @@
 #home-container {
-	margin-top: 100px;
-	height: 300px;
+
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	width: 95%;
+	grid-template-columns: repeat(5, 50%);
+	grid-column-gap: 48px;
+	grid-row-gap: 32px;
 }
 
 #logo-container {
-	margin-left: 25%;
-	width: 50%;
-	height: auto;
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+#container2 {
+	grid-area: 1 / 2 / 2 / 3;
+}
+
+#container3 { 
+	grid-area: 2 / 1 / 3 / 2;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container4 { 
+	grid-area: 2 / 2 / 3 / 3; 
+}
+
+#btn-links { 
+	grid-area: 3 / 1 / 4 / 3; 
 }
 
 #btn-link-covid {
@@ -19,6 +41,11 @@
 }
 
 #btn-links {
-	margin-top: 50px;
-	margin-left: 33%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#btn-links button {
+	height: 96px;
+	width: 256px;
 }
