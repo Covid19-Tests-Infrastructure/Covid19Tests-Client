@@ -7,7 +7,7 @@ import { EditComponent } from "./edit/edit.component";
 
 const routes: Routes = [
 	{ path: "create", component: CreateComponent, pathMatch: "full" },
-	{ path: ":username/edit", component: EditComponent, pathMatch: "full" },
+	{ path: "edit/:username", component: EditComponent, pathMatch: "full" },
 	{ path: "", component: UserManagementComponent, pathMatch: "full" }
 ];
 

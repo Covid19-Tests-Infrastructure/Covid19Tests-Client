@@ -73,6 +73,10 @@ export class EditComponent implements OnInit {
 
 		this.userService.editLocalUser(updatedUser, this.username).subscribe(
 			result => {
+				result.passwordDto = {
+					newPassword: null,
+					oldPassword: null
+				};
 				this.form.patchValue(result);
 				this.snackbar.open("Nutzerdaten wurden erfolgreich geändert!", "OK", { duration: 3000 });
 			},
