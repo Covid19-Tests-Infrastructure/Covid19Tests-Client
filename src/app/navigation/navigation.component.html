@@ -16,13 +16,11 @@
 				<mat-icon>home</mat-icon>Home
 			</a>
 
-			<button *ngIf="!isLoggedIn()" (click)="logout()">
-				<a mat-list-item>
-					<mat-icon>perm_identity</mat-icon>
-				</a>
-			</button>
+			<a (click)="logout()" *ngIf="isLoggedIn()" mat-list-item>
+				<mat-icon>perm_identity</mat-icon>Ausloggen
+			</a>
 
-			<a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
+			<a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
 				<mat-icon>account_box</mat-icon>Login
 			</a>
 			

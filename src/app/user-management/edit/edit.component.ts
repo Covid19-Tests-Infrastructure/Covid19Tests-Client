@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserControllerService, UserDto } from "../../../../api";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,
 				private route: ActivatedRoute,
+				private router: Router,
 				private snackbar: MatSnackBar) {
 
 		this.form = this.fb.group({
@@ -45,7 +46,7 @@ export class EditComponent implements OnInit {
 				}),
 			}),
 			role: [""],
-			isActive: [""]
+			isActive: [true]
 		});
 
 	}
@@ -85,6 +86,21 @@ export class EditComponent implements OnInit {
 				this.snackbar.open("Fehler", "OK", { duration: 3000 });
 			}
 		);
+	}
+
+	onDelete(): void {
+		if (window.confirm("Möchten Sie diesen Nutzer wirklich löschen ?")) {
+			this.userService.deleteUser(this.username).subscribe(
+				result => {
+					this.snackbar.open("Nutzer wurde erfolgreich gelöscht!", "OK", { duration: 3000 });
+					this.router.navigate(["/users"]);
+				},
+				error => {
+					console.log(error);
+					this.snackbar.open("Fehler", "OK", { duration: 3000 });
+				}
+			);
+		}
 	}
 
 }

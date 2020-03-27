@@ -43,7 +43,7 @@ export class CreateComponent implements OnInit {
 				}),
 			}),
 			role: [""],
-			isActive: [""]
+			isActive: [true]
 		});
 	}
 
