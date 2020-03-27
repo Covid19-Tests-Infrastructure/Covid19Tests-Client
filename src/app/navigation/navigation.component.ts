@@ -14,7 +14,7 @@ export class NavigationComponent {
 	constructor(private authService: AuthService) { }
 
 	getUsername(): string {
-		return this.authService.getUserSettings().username ?? null;
+		return this.authService.getUserSettings()?.username ?? null;
 	}
 
 	getLoggedInUser(): UserDto {
