@@ -47,7 +47,7 @@
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Email</mat-label>
 				<input matInput formControlName="email" required>
-				<mat-error></mat-error>
+				<mat-error>Bitte gültige Email-Addresse eingeben.</mat-error>
 			</mat-form-field>
 
 			<div formGroupName="address" id="address-form">
@@ -106,8 +106,8 @@
 				<mat-error></mat-error>
 			</mat-form-field>
 
-			<label><strong>Geschlecht</strong></label>
-			<mat-radio-group class="radio-group" formControlName="gender">
+			<label>Geschlecht:</label>
+			<mat-radio-group class="gender-radio-group" formControlName="gender">
 				<mat-radio-button [value]="genderEnum.M">Männlich</mat-radio-button>
 				<mat-radio-button [value]="genderEnum.W">Weiblich</mat-radio-button>
 				<mat-radio-button [value]="genderEnum.D">Divers</mat-radio-button>
@@ -218,7 +218,7 @@
 		</mat-form-field>
 
 	</mat-card>
-	<button (click)="test()">TEST</button>
+
 	<mat-checkbox >Ich habe die Hinweise zum <a href="">Datenschutz</a> gelesen und akzeptiere diese.</mat-checkbox><br>
 	<button mat-raised-button color="accent" (click)="onSave()" [disabled]="form.invalid">Senden</button>
 

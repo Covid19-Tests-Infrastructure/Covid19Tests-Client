@@ -87,17 +87,11 @@ export class CovidTestComponent implements OnInit {
 		);
 	}
 
-	test(): void {
-		const formDto: FormDto = this.form.value;
-		console.log(formDto);
-	}
-
 	onSave(): void {
 		if (this.form.valid) {
 			const formDto: FormDto = this.form.value;
 			this.covidTestOrderService.addFormular(formDto).subscribe(
 				result => {
-					console.log(result);
 					this.snackbar.open("Anmeldung erfolgreich verschickt!", "OK", { duration: 3000 });
 					this.router.navigate(["/"]);
 				},

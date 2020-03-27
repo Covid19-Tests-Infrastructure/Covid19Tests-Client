@@ -10,7 +10,7 @@
 
 <!-- SIDE MENU -->
 <mat-sidenav-container class="sidenav-container"> 
-	<mat-sidenav #drawer class="sidenav mat-elevation-z4" fixedInViewport [opened]=true mode="side">
+	<mat-sidenav #drawer class="sidenav mat-elevation-z4" fixedInViewport [opened]="true" mode="side">
 		<mat-nav-list>
 			<img id="drk-logo" src="../../assets/img/logo_drk.svg">
 			<mat-divider></mat-divider>
@@ -55,6 +55,10 @@
 	<mat-sidenav-content>
 		<!-- Add Content Here -->
 		<div class="background-container">
+			<button mat-icon-button type="button" id="drawer-toggle" (click)="drawer.toggle()">
+				<mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+				<mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+			</button>
 			<div class="content-container">
 				<router-outlet></router-outlet>
 			</div>
