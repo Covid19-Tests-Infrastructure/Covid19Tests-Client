@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Body } from '../model/body';
 import { UserDto } from '../model/userDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -26,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthControllerService {
 
-    protected basePath = 'http://172.27.233.159:8080';
+    protected basePath = 'http://172.27.236.182:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,30 +59,17 @@ export class AuthControllerService {
     /**
      * 
      * 
-     * @param username 
-     * @param password 
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authenticate(username: string, password: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public authenticate(username: string, password: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public authenticate(username: string, password: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public authenticate(username: string, password: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public authenticate(body: Body, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public authenticate(body: Body, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public authenticate(body: Body, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public authenticate(body: Body, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (username === null || username === undefined) {
-            throw new Error('Required parameter username was null or undefined when calling authenticate.');
-        }
-
-        if (password === null || password === undefined) {
-            throw new Error('Required parameter password was null or undefined when calling authenticate.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (username !== undefined && username !== null) {
-            queryParameters = queryParameters.set('username', <any>username);
-        }
-        if (password !== undefined && password !== null) {
-            queryParameters = queryParameters.set('password', <any>password);
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling authenticate.');
         }
 
         let headers = this.defaultHeaders;
@@ -97,11 +85,16 @@ export class AuthControllerService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.request<string>('post',`${this.basePath}/api/authenticate`,
             {
-                params: queryParameters,
+                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

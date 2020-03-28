@@ -1,4 +1,5 @@
 export * from './addressDto';
+export * from './body';
 export * from './changePasswordDto';
 export * from './covid19Info';
 export * from './formDto';

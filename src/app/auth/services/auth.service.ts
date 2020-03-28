@@ -16,7 +16,7 @@ export class AuthService {
 				private http: HttpClient) { }
 
 	async login(username: string, password: string): Promise<void> {
-		const result = await this.authenticationService.authenticate(username, password).toPromise()
+		const result = await this.authenticationService.authenticate({ username: username, password: password }).toPromise()
 			.catch(error => {
 				console.log(error);
 				// Rethrow the error, so calling component is able to display the error
