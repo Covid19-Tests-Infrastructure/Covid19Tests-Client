@@ -7,7 +7,7 @@ import { MatTableDataSource } from "@angular/material/table";
 @Component({
 	selector: "app-user-management",
 	templateUrl: "./user-management.component.html",
-	styleUrls: ["./user-management.component.css"]
+	styleUrls: ["./user-management.component.scss"]
 })
 export class UserManagementComponent implements OnInit {
 
@@ -22,15 +22,23 @@ export class UserManagementComponent implements OnInit {
 	constructor(private userService: UserControllerService) { }
 
 	ngOnInit(): void {
-		this.userService.getAllUsers().subscribe(
-			result => {
-				this.users = result;
-				this.dataSource = new MatTableDataSource(this.users);
-				this.dataSource.paginator = this.paginator;
-				this.dataSource.sort = this.sort;
-			},
-			error => console.log(error)
-		);
+		this.users = [{
+			username: "",
+			settings: null,
+
+		}];
+		this.dataSource = new MatTableDataSource(this.users);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+		// this.userService.getAllUsers().subscribe(
+		// 	result => {
+		// 		this.users = result;
+		// 		this.dataSource = new MatTableDataSource(this.users);
+		// 		this.dataSource.paginator = this.paginator;
+		// 		this.dataSource.sort = this.sort;
+		// 	},
+		// 	error => console.log(error)
+		// );
 	}
 
 	applyFilter(filterValue: string): void {

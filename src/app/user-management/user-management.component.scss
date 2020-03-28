@@ -1,3 +1,13 @@
+#user-management-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+#table-users {
+	max-width: 100%;
+}
+
 #btn-add-user {
 	margin-left: 8px;
 	align-content: center;
@@ -11,10 +21,6 @@
 .link-username {
 	text-decoration: none;
 	color: inherit;
-}
-
-th {
-	width: 150px;
 }
 
 #filter {
