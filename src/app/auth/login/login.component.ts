@@ -14,6 +14,10 @@ export class LoginComponent {
 
 	constructor(private authService: AuthService) { }
 
+	async test(): Promise<void> {
+		console.log("Clicked");
+	}
+
 	async login(): Promise<void> {
 		await this.authService.login(this.username, this.password)
 			.catch(error => {
