@@ -22,23 +22,15 @@ export class UserManagementComponent implements OnInit {
 	constructor(private userService: UserControllerService) { }
 
 	ngOnInit(): void {
-		this.users = [{
-			username: "",
-			settings: null,
-
-		}];
-		this.dataSource = new MatTableDataSource(this.users);
-		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
-		// this.userService.getAllUsers().subscribe(
-		// 	result => {
-		// 		this.users = result;
-		// 		this.dataSource = new MatTableDataSource(this.users);
-		// 		this.dataSource.paginator = this.paginator;
-		// 		this.dataSource.sort = this.sort;
-		// 	},
-		// 	error => console.log(error)
-		// );
+		this.userService.getAllUsers().subscribe(
+			result => {
+				this.users = result;
+				this.dataSource = new MatTableDataSource(this.users);
+				this.dataSource.paginator = this.paginator;
+				this.dataSource.sort = this.sort;
+			},
+			error => console.log(error)
+		);
 	}
 
 	applyFilter(filterValue: string): void {

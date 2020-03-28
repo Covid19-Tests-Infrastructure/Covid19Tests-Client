@@ -13,41 +13,41 @@
 	</mat-form-field>
 
 	<div>
-		<table mat-table [dataSource]="dataSource" matSort>
+		<table id="table-users" mat-table [dataSource]="dataSource" matSort>
 			<!-- Username Column -->
 			<ng-container matColumnDef="username">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Nutzername</th>
-				<td mat-cell *matCellDef="let row"> <a class="link-username" [routerLink]="['edit', row.username ]">Abcdefghiklmnopqerstuvwxqz</a> </td>
+				<td mat-cell *matCellDef="let row"> <a class="link-username" [routerLink]="['edit', row.username ]">{{row.username}}</a> </td>
 			</ng-container>
 
 			<!-- Firstname Column -->
 			<ng-container matColumnDef="firstname">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Vorname</th>
-				<td mat-cell *matCellDef="let row"> Abcdefghiklmnopqerstuvwxqz</td>
+				<td mat-cell *matCellDef="let row">{{row.settings.ordererInfo.firstname}}</td>
 			</ng-container>
 
 			<!-- Lastname Column -->
 			<ng-container matColumnDef="lastname">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Nachname</th>
-				<td mat-cell *matCellDef="let row"> Abcdefghiklmnopqerstuvwxqz </td>
+				<td mat-cell *matCellDef="let row">{{row.settings.ordererInfo.firstname}}</td>
 			</ng-container>
 
 			<!-- Email Column -->
 			<ng-container matColumnDef="email">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-				<td mat-cell *matCellDef="let row"> eine.sehr.lange.email@adresse.zum.testen </td>
+				<td mat-cell *matCellDef="let row">{{row.settings.ordererInfo.firstname}}</td>
 			</ng-container>
 
 			<!-- Facility Column -->
 			<ng-container matColumnDef="facility">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Einrichtung</th>
-				<td mat-cell *matCellDef="let row"> Abcdefghiklmnopqerstuvwxqz </td>
+				<td mat-cell *matCellDef="let row">{{row.settings.facility}}</td>
 			</ng-container>
 
 			<!-- Role Column -->
 			<ng-container matColumnDef="role">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Rolle</th>
-				<td mat-cell *matCellDef="let row"> ADMIN </td>
+				<td mat-cell *matCellDef="let row">{{row.role}}</td>
 			</ng-container>
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
