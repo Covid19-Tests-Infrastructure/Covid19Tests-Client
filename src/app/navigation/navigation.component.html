@@ -64,10 +64,8 @@
 		</mat-toolbar> 
 		<!-- Add Content Here -->
 		<div class="background-container">
-			<!-- <button *ngIf="!drawer.opened" mat-icon-button type="button" id="drawer-toggle-closed" [disableRipple]="true" (click)="drawer.toggle()">
-				<mat-icon>menu</mat-icon>
-			</button> -->
 			<div class="content-container">
+				<div *ngIf="(isHandset$ | async)" id="handset-margin"></div>
 				<router-outlet></router-outlet>
 			</div>
 		</div>
