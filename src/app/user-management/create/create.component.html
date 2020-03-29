@@ -12,13 +12,13 @@
 		<div formGroupName="passwordDto">
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Altes Passwort</mat-label>
-				<input matInput formControlName="oldPassword">
+				<input matInput type="password" formControlName="oldPassword">
 				<mat-error></mat-error>
 			</mat-form-field>
 	
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Neues Passwort</mat-label>
-				<input matInput formControlName="newPassword" required>
+				<input matInput type="password" formControlName="newPassword" required>
 				<mat-error></mat-error>
 			</mat-form-field>
 		</div>
