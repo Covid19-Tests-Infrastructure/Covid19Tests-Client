@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { AuthService } from "../auth/services/auth.service";
 import { UserDto } from "../../../api";
+import { Observable } from "rxjs";
+import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import { map, shareReplay } from "rxjs/operators";
 
 @Component({
 	selector: "app-navigation",
@@ -11,7 +14,14 @@ export class NavigationComponent {
 
 	loggedInUser: UserDto;
 
-	constructor(private authService: AuthService) { }
+	isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset])
+		.pipe(
+			map(result => result.matches),
+			shareReplay()
+		);
+
+	constructor(private authService: AuthService,
+				private breakpointObserver: BreakpointObserver) { }
 
 	getUsername(): string {
 		return this.authService.getUserSettings()?.username ?? "";

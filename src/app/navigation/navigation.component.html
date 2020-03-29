@@ -1,18 +1,18 @@
-<!-- TOP BAR -->
-<!-- <mat-toolbar class="titlebar">
-	<button mat-icon-button type="button" (click)="drawer.toggle()">
-		<mat-icon>menu</mat-icon>
-	</button>
-	<span>
-		Covid-19-Test
-	</span>
-</mat-toolbar> -->
-
 <!-- SIDE MENU -->
-<mat-sidenav-container class="sidenav-container"> 
-	<mat-sidenav #drawer class="sidenav mat-elevation-z4" fixedInViewport [opened]="true" mode="side">
+<mat-sidenav-container class="sidenav-container">
+	<mat-sidenav #drawer class="sidenav mat-elevation-z4" fixedInViewport
+	[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" 
+	[opened]="(isHandset$ | async) === false" 
+	[mode]="(isHandset$ | async) ? 'over' : 'side'">
 		<mat-nav-list>
-			<img id="drk-logo" src="../../assets/img/logo_drk.svg">
+
+			<div id="sidenav-logo-container">
+				<img id="drk-logo" src="../../assets/img/logo_drk.svg">
+				<!-- <button mat-icon-button type="button" id="drawer-toggle-open" [disableRipple]="true" (click)="drawer.toggle()">
+					<mat-icon *ngIf="drawer.opened">menu_open</mat-icon>
+				</button> -->
+			</div>
+			
 			<mat-divider></mat-divider>
 			<a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
 				<mat-icon>home</mat-icon>Startseite
@@ -53,12 +53,20 @@
 	</mat-sidenav>
 
 	<mat-sidenav-content>
+		<!-- TOP BAR -->
+		<mat-toolbar *ngIf="(isHandset$ | async)" class="titlebar">
+			<button mat-icon-button type="button" (click)="drawer.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span>
+				Covid-19-Test
+			</span>
+		</mat-toolbar> 
 		<!-- Add Content Here -->
 		<div class="background-container">
-			<button mat-icon-button type="button" id="drawer-toggle" (click)="drawer.toggle()">
-				<mat-icon *ngIf="drawer.opened">keyboard_arrow_left</mat-icon>
-				<mat-icon *ngIf="!drawer.opened">keyboard_arrow_right</mat-icon>
-			</button>
+			<!-- <button *ngIf="!drawer.opened" mat-icon-button type="button" id="drawer-toggle-closed" [disableRipple]="true" (click)="drawer.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button> -->
 			<div class="content-container">
 				<router-outlet></router-outlet>
 			</div>
