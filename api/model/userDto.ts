@@ -20,9 +20,10 @@ export interface UserDto {
     isActive?: boolean;
 }
 export namespace UserDto {
-    export type RoleEnum = 'DEFAULT' | 'ADMIN';
+    export type RoleEnum = 'DEFAULT' | 'KVN' | 'ADMIN';
     export const RoleEnum = {
         DEFAULT: 'DEFAULT' as RoleEnum,
+        KVN: 'KVN' as RoleEnum,
         ADMIN: 'ADMIN' as RoleEnum
     };
 }

@@ -2,7 +2,7 @@ export * from './addressDto';
 export * from './body';
 export * from './changePasswordDto';
 export * from './covid19Info';
-export * from './formDto';
+export * from './formKvnDto';
 export * from './ordererDto';
 export * from './patientDto';
 export * from './settingsDto';

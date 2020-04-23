@@ -12,7 +12,7 @@
 import { AddressDto } from './addressDto';
 
 export interface PatientDto { 
-    occupationGroup: string;
+    occupationGroup?: string;
     firstname: string;
     lastname: string;
     gender: PatientDto.GenderEnum;
@@ -20,7 +20,7 @@ export interface PatientDto {
     address?: AddressDto;
     phoneNumber: string;
     healthCareOrganisationNumber?: string;
-    personalHealthCareNumber: string;
+    personalHealthCareNumber?: string;
     insuranceType: string;
     mobile: boolean;
 }

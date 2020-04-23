@@ -17,7 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { FormDto } from '../model/formDto';
+import { FormKvnDto } from '../model/formKvnDto';
+import { PatientDto } from '../model/patientDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -26,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class FormControllerService {
 
-    protected basePath = 'http://172.27.236.182:8080';
+    protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -62,13 +63,13 @@ export class FormControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addFormular(body: FormDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addFormular(body: FormDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addFormular(body: FormDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public addFormular(body: FormDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public addFormularKvn(body: FormKvnDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public addFormularKvn(body: FormKvnDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public addFormularKvn(body: FormKvnDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addFormularKvn(body: FormKvnDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling addFormular.');
+            throw new Error('Required parameter body was null or undefined when calling addFormularKvn.');
         }
 
         let headers = this.defaultHeaders;
@@ -97,7 +98,60 @@ export class FormControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/form/add`,
+        return this.httpClient.request<any>('put',`${this.basePath}/api/form/kvn`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public addFormularPrivate(body: PatientDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public addFormularPrivate(body: PatientDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public addFormularPrivate(body: PatientDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addFormularPrivate(body: PatientDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling addFormularPrivate.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearer-key) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<any>('put',`${this.basePath}/api/form/default`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
