@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthControllerService, FormControllerService, PatientDto } from "../../../../api";
+import { AuthControllerService, FormControllerService, PatientDto, PriceDto } from "../../../../api";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -12,6 +12,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class PrivateOrderComponent implements OnInit {
 
 	form: FormGroup;
+	prices: Map<string, number>;
 	genderEnum = PatientDto.GenderEnum;
 	organisationAutoComplete = [
 		"Polizei", 

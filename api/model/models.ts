@@ -5,5 +5,6 @@ export * from './covid19Info';
 export * from './formKvnDto';
 export * from './ordererDto';
 export * from './patientDto';
+export * from './priceDto';
 export * from './settingsDto';
 export * from './userDto';

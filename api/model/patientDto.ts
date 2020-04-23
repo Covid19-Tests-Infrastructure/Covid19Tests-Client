@@ -17,12 +17,12 @@ export interface PatientDto {
     lastname: string;
     gender: PatientDto.GenderEnum;
     bday: string;
-    address?: AddressDto;
+    address: AddressDto;
     phoneNumber: string;
     healthCareOrganisationNumber?: string;
     personalHealthCareNumber?: string;
     insuranceType: string;
-    mobile: boolean;
+    mobile?: boolean;
 }
 export namespace PatientDto {
     export type GenderEnum = 'M' | 'W' | 'D';
