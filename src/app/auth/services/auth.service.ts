@@ -34,7 +34,7 @@ export class AuthService {
 				error => console.log(error, "Failed to load user settings.")
 			);
 
-			this.router.navigate(["/covid-test"]);
+			this.router.navigateByUrl("");
 		}
 	}
 

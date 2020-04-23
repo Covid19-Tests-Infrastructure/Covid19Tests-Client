@@ -15,6 +15,7 @@ export class EditComponent implements OnInit {
 	form: FormGroup;
 	username: string;
 	isAdmin: boolean;
+	roles = UserDto.RoleEnum;
 
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,

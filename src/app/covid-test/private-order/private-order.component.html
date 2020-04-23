@@ -1,0 +1,106 @@
+<form id="private-form" [formGroup]="form" autocomplete="off">
+
+	<mat-card-title id="headline">Kostenpflichtige Bestellung: COVID-19-Test</mat-card-title>
+
+	<div id="form-grid">
+		<mat-card class="form-card mat-elevation-z4" div="left">
+			<mat-card-title>Angaben zur Person</mat-card-title>
+	
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Vorname</mat-label>
+				<input matInput formControlName="firstname" required>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Nachname</mat-label>
+				<input matInput formControlName="lastname" required>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<label>Geschlecht:</label>
+			<mat-radio-group class="gender-radio-group" formControlName="gender">
+				<mat-radio-button [value]="genderEnum.M">Männlich</mat-radio-button>
+				<mat-radio-button [value]="genderEnum.W">Weiblich</mat-radio-button>
+				<mat-radio-button [value]="genderEnum.D">Divers</mat-radio-button>
+			</mat-radio-group>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Geburtsdatum</mat-label>
+				<input matInput formControlName="bday" required>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Telefonnummer (vorzugweise Mobilfunknummer)</mat-label>
+				<input matInput formControlName="phoneNumber" required>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Krankenkasse bzw. Kostenträger</mat-label>
+				<input matInput formControlName="healthCareOrganisationNumber">
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Versicherten-/ Kostenträgernummer</mat-label>
+				<input matInput formControlName="personalHealthCareNumber">
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+		
+			<mat-form-field floatLabel="auto" class="form-field">
+				<mat-label>Versichtertenart</mat-label>
+				<input matInput formControlName="insuranceType" [matAutocomplete]="autoInsurance" required>
+				<mat-autocomplete #autoInsurance="matAutocomplete">
+					<mat-option *ngFor="let option of insuranceAutoComplete" [value]="option">
+					  {{ option }}
+					</mat-option>
+				</mat-autocomplete>
+				<mat-error>Feld muss ausgefüllt werden.</mat-error>
+			</mat-form-field>
+	
+			<label><strong>Mobilität des Patienten</strong></label>
+			<mat-radio-group class="radio-group" formControlName="mobile">
+				<mat-radio-button [value]="true">Der Patient ist mit dem eigenen PKW mobil.</mat-radio-button>
+				<mat-radio-button [value]="false">Der Patient ist nicht mit dem eigenen PKW mobil.<br> (Hausbesuche nur innerhalb der Stadt oder Region Hannover möglich)</mat-radio-button>
+			</mat-radio-group>
+		</mat-card>
+		<mat-card class ="form-card mat-elevation-z4" div="right">
+			<mat-card-title>Adresse</mat-card-title>
+	
+			<div formGroupName="address">
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Straße</mat-label>
+					<input matInput formControlName="street">
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Hausnummer</mat-label>
+					<input matInput formControlName="hnumber">
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>PLZ</mat-label>
+					<input matInput formControlName="zip">
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field floatLabel="auto" class="form-field">
+					<mat-label>Ort</mat-label>
+					<input matInput formControlName="ort">
+					<mat-error>Feld muss ausgefüllt werden.</mat-error>
+				</mat-form-field>
+			</div>
+	
+		</mat-card>
+	
+		<div id="bottom">
+			<p>Unter <a [routerLink]="['/privacy']">Datenschutz</a> finden Sie unsere Informationen gemäß Art. 13 DSGVO über den Datenschutz im Zusammenhang mit der Datenverarbeitung.</p>
+			<button mat-raised-button color="accent" (click)="onSave()" [disabled]="form.invalid">Kostenpflichtig bestellen</button>
+		</div>
+	</div>
+	
+</form>

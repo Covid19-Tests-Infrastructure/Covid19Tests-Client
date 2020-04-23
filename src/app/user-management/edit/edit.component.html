@@ -28,7 +28,7 @@
 		<div formGroupName="settings">
 			<ng-container *ngIf="isAdmin">
 				<mat-form-field floatLabel="auto" class="form-field">
-					<mat-label>Facility</mat-label>
+					<mat-label>Einrichtung</mat-label>
 					<input matInput formControlName="facility" required>
 					<mat-error></mat-error>
 				</mat-form-field>
@@ -110,8 +110,9 @@
 		<ng-container *ngIf="isAdmin">
 			<mat-label>Rolle</mat-label>
 			<mat-radio-group formControlName="role">
-				<mat-radio-button [value]="'DEFAULT'">DEFAULT</mat-radio-button>
-				<mat-radio-button [value]="'ADMIN'">ADMIN</mat-radio-button>
+				<mat-radio-button [value]="roles.DEFAULT">DEFAULT</mat-radio-button>
+				<mat-radio-button [value]="roles.KVN">KVN</mat-radio-button>
+				<mat-radio-button [value]="roles.ADMIN">ADMIN</mat-radio-button>
 			</mat-radio-group>
 			<mat-error></mat-error>
 		</ng-container>

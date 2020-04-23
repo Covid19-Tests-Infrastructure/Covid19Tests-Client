@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Covid19Info, PatientDto, FormDto, FormControllerService, AuthControllerService } from "../../../api";
+import { Covid19Info, PatientDto, FormControllerService, AuthControllerService, FormKvnDto } from "../../../api";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 
@@ -89,8 +89,8 @@ export class CovidTestComponent implements OnInit {
 
 	onSave(): void {
 		if (this.form.valid) {
-			const formDto: FormDto = this.form.value;
-			this.covidTestOrderService.addFormular(formDto).subscribe(
+			const formKvn: FormKvnDto = this.form.value;
+			this.covidTestOrderService.addFormularKvn(formKvn).subscribe(
 				result => {
 					this.snackbar.open("Anmeldung erfolgreich verschickt!", "OK", { duration: 3000 });
 					this.router.navigate(["/"]);

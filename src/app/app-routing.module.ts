@@ -7,14 +7,17 @@ import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from "./auth/guards/auth.guard";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
+import { AdminGuard } from "./auth/guards/admin.guard";
+import { PrivateOrderComponent } from "./covid-test/private-order/private-order.component";
 
 const routes: Routes = [
 	{ path: "login", component: LoginComponent, pathMatch: "full" },
 	{ path: "404", component: PageNotFoundComponent, pathMatch: "full" },
 	{ path: "privacy", component: PrivacyComponent, pathMatch: "full" },
 	{ path: "imprint", component: ImprintComponent, pathMatch: "full" },
-	{ path: "covid-test", component: CovidTestComponent, pathMatch: "full", canActivate: [AuthGuard]},
-	{ path: "users", loadChildren: () => import("./user-management/user-management.module").then(m => m.UserManagementModule), canActivate: [AuthGuard] },
+	{ path: "covid-test", component: CovidTestComponent, pathMatch: "full", canActivate: [AuthGuard] },
+	{ path: "covid-test-privat", component: PrivateOrderComponent, pathMatch: "full", canActivate: [AuthGuard] },
+	{ path: "users", loadChildren: () => import("./user-management/user-management.module").then(m => m.UserManagementModule), canActivate: [AdminGuard] },
 	{ path: "", component: HomeComponent, pathMatch: "full" },
 ];
 

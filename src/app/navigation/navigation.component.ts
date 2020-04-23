@@ -15,6 +15,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 export class NavigationComponent {
 
 	loggedInUser: UserDto;
+	roles = UserDto.RoleEnum;
 
 	@ViewChild("drawer") drawer: MatSidenav;
 	isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset])
@@ -22,7 +23,6 @@ export class NavigationComponent {
 			map(result => result.matches),
 			shareReplay()
 		);
-
 
 	constructor(private authService: AuthService,
 				private breakpointObserver: BreakpointObserver,

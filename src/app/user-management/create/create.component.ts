@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 export class CreateComponent implements OnInit {
 
 	form: FormGroup;
-	roles: UserDto.RoleEnum;
+	roles = UserDto.RoleEnum;
 
 	constructor(private fb: FormBuilder,
 				private userService: UserControllerService,
