@@ -28,10 +28,10 @@ export class PrivateOrderComponent implements OnInit {
 	];
 
 	constructor(private fb: FormBuilder,
-		private authentication: AuthControllerService,
-		private covidTestOrderService: FormControllerService,
-		private router: Router,
-		private snackbar: MatSnackBar) { 
+				private authentication: AuthControllerService,
+				private covidTestOrderService: FormControllerService,
+				private router: Router,
+				private snackbar: MatSnackBar) { 
 
 		this.form = this.fb.group({
 			occupationGroup: [""],
