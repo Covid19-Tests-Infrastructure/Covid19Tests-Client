@@ -49,7 +49,7 @@ export class PrivateOrderComponent implements OnInit {
 			phoneNumber: ["", Validators.required],
 			healthCareOrganisationNumber: [""],
 			personalHealthCareNumber: [""],
-			insuranceType: ["", Validators.required],
+			insuranceType: [""],
 			mobile: [true, Validators.required],
 		});
 	}

@@ -58,7 +58,7 @@
 		
 			<mat-form-field floatLabel="auto" class="form-field">
 				<mat-label>Versichtertenart</mat-label>
-				<input matInput formControlName="insuranceType" [matAutocomplete]="autoInsurance" required>
+				<input matInput formControlName="insuranceType" [matAutocomplete]="autoInsurance">
 				<mat-autocomplete #autoInsurance="matAutocomplete">
 					<mat-option *ngFor="let option of insuranceAutoComplete" [value]="option">
 					  {{ option }}
