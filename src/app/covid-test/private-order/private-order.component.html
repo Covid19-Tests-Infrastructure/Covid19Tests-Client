@@ -1,8 +1,15 @@
 <form id="private-form" [formGroup]="form" autocomplete="off">
 
-	<mat-card-title id="headline">Kostenpflichtige Bestellung: COVID-19-Test</mat-card-title>
+	<mat-card-title id="headline">Bestellung: COVID-19-Test</mat-card-title>
 
 	<div id="form-grid">
+		<mat-card id="top">
+			<h3>Hinweise zum Bestellverfahren:</h3>
+			<p>Alle Bestellungen des aktuellen Werktages werden gesammelt. Am nächsten Tag erhalten Sie eine E-Mail oder einen Anruf mit einer Kostenaufstellung.<br> Daraufhin können Sie zustimmen, oder ablehnen.</p>
+			<p>Die aktuelle Preisliste finden Sie hier: <a href="https://storage.biocrafting.net/f/f74f13ffc35c4b01a6fd">Preisliste</a>
+			</p>
+		</mat-card>
+
 		<mat-card class="form-card mat-elevation-z4" div="left">
 			<mat-card-title>Angaben zur Person</mat-card-title>
 	
@@ -99,7 +106,7 @@
 	
 		<div id="bottom">
 			<p>Unter <a [routerLink]="['/privacy']">Datenschutz</a> finden Sie unsere Informationen gemäß Art. 13 DSGVO über den Datenschutz im Zusammenhang mit der Datenverarbeitung.</p>
-			<button mat-raised-button color="accent" (click)="onSave()" [disabled]="form.invalid">Kostenpflichtig bestellen (40€)</button>
+			<button mat-raised-button color="accent" (click)="onSave()" [disabled]="form.invalid">Bestellung aufgeben</button>
 		</div>
 	</div>
 	
