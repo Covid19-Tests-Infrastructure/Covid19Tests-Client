@@ -22,28 +22,30 @@
 				<mat-icon>account_box</mat-icon>Login
 			</a>
 
-			<a *ngIf="isLoggedIn() && getLoggedInUser()?.role === roles.ADMIN" mat-list-item [routerLink]="['/users/edit', getUsername()]" routerLinkActive="router-link-active">
-				<mat-icon>person</mat-icon>Mein Account
-			</a>
-			
-			<a *ngIf="isLoggedIn() && (getLoggedInUser()?.role === roles.KVN || getLoggedInUser()?.role === roles.ADMIN)" 
-				mat-list-item [routerLink]="['/covid-test']" routerLinkActive="router-link-active">
-				<mat-icon>assignment</mat-icon>COVID-19-Test
-			</a>
-
-			<a *ngIf="isLoggedIn() && (getLoggedInUser()?.role === roles.PRIVATE || getLoggedInUser()?.role === roles.ADMIN)" 
-				mat-list-item [routerLink]="['/covid-test-privat']" routerLinkActive="router-link-active">
-				<mat-icon>add_shopping_cart</mat-icon>COVID-19-Test
-			</a>
-
-			<a *ngIf="isLoggedIn() && (getLoggedInUser()?.role === roles.DEFAULT || getLoggedInUser()?.role === roles.ADMIN)" 
-				mat-list-item [routerLink]="['/covid-test-allgemein']" routerLinkActive="router-link-active">
-				<mat-icon>add_shopping_cart</mat-icon>COVID-19-Test
-			</a>
-
-			<a *ngIf="isLoggedIn() && getLoggedInUser()?.role === roles.ADMIN" mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
-				<mat-icon>supervisor_account</mat-icon>Nutzerverwaltung
-			</a>
+			<ng-container *ngIf="isLoggedIn()">
+				<a *ngIf="getLoggedInUser()?.role === roles.ADMIN" mat-list-item [routerLink]="['/users/edit', getUsername()]" routerLinkActive="router-link-active">
+					<mat-icon>person</mat-icon>Mein Account
+				</a>
+				
+				<a *ngIf="(getLoggedInUser()?.role === roles.KVN || getLoggedInUser()?.role === roles.ADMIN)" 
+					mat-list-item [routerLink]="['/covid-test']" routerLinkActive="router-link-active">
+					<mat-icon>assignment</mat-icon>COVID-19-Test
+				</a>
+	
+				<a *ngIf="(getLoggedInUser()?.role === roles.PRIVATE || getLoggedInUser()?.role === roles.ADMIN)" 
+					mat-list-item [routerLink]="['/covid-test-privat']" routerLinkActive="router-link-active">
+					<mat-icon>add_shopping_cart</mat-icon>COVID-19-Test
+				</a>
+	
+				<a *ngIf="(getLoggedInUser()?.role === roles.DEFAULT || getLoggedInUser()?.role === roles.ADMIN)" 
+					mat-list-item [routerLink]="['/covid-test-allgemein']" routerLinkActive="router-link-active">
+					<mat-icon>add_shopping_cart</mat-icon>COVID-19-Test
+				</a>
+	
+				<a *ngIf="getLoggedInUser()?.role === roles.ADMIN" mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">
+					<mat-icon>supervisor_account</mat-icon>Nutzerverwaltung
+				</a>
+			</ng-container>
 
 			<div id="sidenav-footer">
 				<mat-divider></mat-divider>
