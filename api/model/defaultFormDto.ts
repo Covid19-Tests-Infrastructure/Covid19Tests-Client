@@ -11,20 +11,20 @@
  */
 import { AddressDto } from './addressDto';
 
-export interface PatientDto { 
-    occupationGroup?: string;
+export interface DefaultFormDto { 
     firstname: string;
     lastname: string;
-    gender: PatientDto.GenderEnum;
+    gender: DefaultFormDto.GenderEnum;
     bday: string;
-    address: AddressDto;
-    phoneNumber: string;
-    healthCareOrganisationNumber?: string;
-    personalHealthCareNumber?: string;
-    insuranceType?: string;
+    phoneNumber?: string;
+    address?: AddressDto;
+    editor?: string;
     mobile?: boolean;
+    testAddressNote?: string;
+    contactSeverity?: string;
+    comment?: string;
 }
-export namespace PatientDto {
+export namespace DefaultFormDto {
     export type GenderEnum = 'M' | 'W' | 'D';
     export const GenderEnum = {
         M: 'M' as GenderEnum,
