@@ -1,32 +1,18 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthControllerService, FormControllerService, PatientDto } from "../../../../api";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { PatientDto, AuthControllerService, FormControllerService, DefaultFormDto } from "../../../../api";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-	selector: "app-private-order",
-	templateUrl: "./private-order.component.html",
-	styleUrls: ["./private-order.component.scss"]
+	selector: "app-allgemein",
+	templateUrl: "./allgemein.component.html",
+	styleUrls: ["./allgemein.component.scss"]
 })
-export class PrivateOrderComponent implements OnInit {
+export class AllgemeinComponent implements OnInit {
 
 	form: FormGroup;
-	prices: Map<string, number>;
 	genderEnum = PatientDto.GenderEnum;
-	organisationAutoComplete = [
-		"Polizei", 
-		"Feuerwehr", 
-		"Med. Einrichtung", 
-		"Pflegerische Einrichtung", 
-		"Krankenhaus", 
-		"Arztpraxis"
-	];
-	insuranceAutoComplete = [
-		"Mitglied",
-		"Familienangehöriger",
-		"Rentner"
-	];
 
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
@@ -35,22 +21,21 @@ export class PrivateOrderComponent implements OnInit {
 				private snackbar: MatSnackBar) { 
 
 		this.form = this.fb.group({
-			occupationGroup: [""],
 			firstname: ["", Validators.required],
 			lastname: ["", Validators.required],
 			gender: [this.genderEnum.M, Validators.required],
 			bday: ["", Validators.required],
-			address: this.fb.group({
-				street: [""],
-				zip: [""],
-				hnumber: [""],
-				ort: [""],
-			}),
-			phoneNumber: ["", Validators.required],
-			healthCareOrganisationNumber: [""],
-			personalHealthCareNumber: [""],
-			insuranceType: [""],
+			phoneNumber: [null],
+			comment: [null],
 			mobile: [true, Validators.required],
+			testaddressnote: [null],
+			contactSeverity: [null],
+			address: this.fb.group({
+				street: [null],
+				zip: [null],
+				hnumber: [null],
+				ort: [null],
+			}),
 		});
 	}
 
@@ -59,8 +44,8 @@ export class PrivateOrderComponent implements OnInit {
 
 	onSave(): void {
 		if (this.form.valid) {
-			const patient: PatientDto = this.form.value;
-			this.covidTestOrderService.addFormularPrivate(patient).subscribe(
+			const defaultForm: DefaultFormDto = this.form.value;
+			this.covidTestOrderService.addFormularDefault(defaultForm).subscribe(
 				result => {
 					this.snackbar.open("Bestellung erfolgreich verschickt!", "OK", { duration: 3000 });
 					this.router.navigateByUrl("/");
@@ -71,6 +56,10 @@ export class PrivateOrderComponent implements OnInit {
 				}
 			);
 		}
+	}
+
+	isFirmenadresse(): boolean {
+		return this.form.get("mobile").value == true;
 	}
 
 }

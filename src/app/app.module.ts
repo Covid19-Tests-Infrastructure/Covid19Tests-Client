@@ -19,6 +19,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { HomeComponent } from "./home/home.component";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
+import { AllgemeinComponent } from "./covid-test/allgemein/allgemein.component";
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -30,7 +31,8 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
 		NavigationComponent,
 		HomeComponent,
 		ImprintComponent,
-		PrivacyComponent
+		PrivacyComponent,
+		AllgemeinComponent
 	],
 	imports: [
 		BrowserModule,

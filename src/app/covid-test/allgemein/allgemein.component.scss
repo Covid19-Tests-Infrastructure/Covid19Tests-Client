@@ -1,0 +1,59 @@
+#headline {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#private-form {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+#form-grid{
+	width: 100%;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	column-gap: 16px;
+
+	@media (max-width: 1278px) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+#top {
+	grid-area: top;
+	background-color: rgba(173, 216, 230, 0.5);
+	margin-bottom: 16px;
+
+	h3 {
+		line-height: 8px;
+		font-weight: 500;
+	}
+}
+ 
+#left {
+	grid-area: left;
+}
+
+#right { 
+	grid-area: right;
+}
+
+#bottom {
+	display: flex;
+	flex-direction: column;
+	width: 100%; 
+	grid-area: bottom;
+}
+
+#contact-severity {
+	margin-top: 8px;
+}
+
+#datenschutz-text {
+	text-align: justify;
+}
+
+
