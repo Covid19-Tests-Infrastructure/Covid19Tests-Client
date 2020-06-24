@@ -28,7 +28,7 @@ export class AllgemeinComponent implements OnInit {
 			phoneNumber: [null],
 			comment: [null],
 			mobile: [true, Validators.required],
-			testaddressnote: [null],
+			testAddressNote: [null],
 			contactSeverity: [null],
 			address: this.fb.group({
 				street: [null],
