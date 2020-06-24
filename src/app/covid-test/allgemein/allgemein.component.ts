@@ -30,6 +30,7 @@ export class AllgemeinComponent implements OnInit {
 			mobile: [true, Validators.required],
 			testAddressNote: [null],
 			contactSeverity: [null],
+			editor: [null],
 			address: this.fb.group({
 				street: [null],
 				zip: [null],
