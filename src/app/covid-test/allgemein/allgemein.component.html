@@ -38,31 +38,42 @@
 						<input matInput formControlName="phoneNumber">
 						<mat-error>Feld muss ausgefüllt werden.</mat-error>
 					</mat-form-field>
+
+					<mat-form-field floatLabel="auto" class="form-field">
+						<mat-label>Versichtertenart</mat-label>
+						<input matInput formControlName="insuranceType" [matAutocomplete]="autoInsurance">
+						<mat-autocomplete #autoInsurance="matAutocomplete">
+							<mat-option *ngFor="let option of insuranceAutoComplete" [value]="option">
+							  {{ option }}
+							</mat-option>
+						</mat-autocomplete>
+						<mat-error>Feld muss ausgefüllt werden.</mat-error>
+					</mat-form-field>
 				</div>
 				
 				<div id="right" formGroupName="address">
 					<h2>Privatadresse</h2>
 					<mat-form-field floatLabel="auto" class="form-field">
 						<mat-label>Straße</mat-label>
-						<input matInput formControlName="street">
+						<input matInput formControlName="street" required>
 						<mat-error>Feld muss ausgefüllt werden.</mat-error>
 					</mat-form-field>
 			
 					<mat-form-field floatLabel="auto" class="form-field">
 						<mat-label>Hausnummer</mat-label>
-						<input matInput formControlName="hnumber">
+						<input matInput formControlName="hnumber" required>
 						<mat-error>Feld muss ausgefüllt werden.</mat-error>
 					</mat-form-field>
 			
 					<mat-form-field floatLabel="auto" class="form-field">
 						<mat-label>PLZ</mat-label>
-						<input matInput formControlName="zip">
+						<input matInput formControlName="zip" required>
 						<mat-error>Feld muss ausgefüllt werden.</mat-error>
 					</mat-form-field>
 			
 					<mat-form-field floatLabel="auto" class="form-field">
 						<mat-label>Ort</mat-label>
-						<input matInput formControlName="ort">
+						<input matInput formControlName="ort" required>
 						<mat-error>Feld muss ausgefüllt werden.</mat-error>
 					</mat-form-field>
 				</div>

@@ -13,6 +13,11 @@ export class AllgemeinComponent implements OnInit {
 
 	form: FormGroup;
 	genderEnum = PatientDto.GenderEnum;
+	insuranceAutoComplete = [
+		"Mitglied",
+		"Familienangehöriger",
+		"Rentner"
+	];
 
 	constructor(private fb: FormBuilder,
 				private authentication: AuthControllerService,
@@ -31,12 +36,13 @@ export class AllgemeinComponent implements OnInit {
 			testAddressNote: [null],
 			contactSeverity: [null],
 			editor: [null],
+			insuranceType: [null],
 			address: this.fb.group({
-				street: [null],
-				zip: [null],
-				hnumber: [null],
-				ort: [null],
-			}),
+				street: [null, Validators.required],
+				zip: [null, Validators.required],
+				hnumber: [null, Validators.required],
+				ort: [null, Validators.required],
+			}, { validators: [Validators.required]}),
 		});
 	}
 
