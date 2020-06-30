@@ -37,6 +37,8 @@ export class AllgemeinComponent implements OnInit {
 			contactSeverity: [null],
 			editor: [null],
 			insuranceType: [null],
+			healthCareOrganisationNumber: [null],
+			personalHealthCareNumber: [null],
 			address: this.fb.group({
 				street: [null, Validators.required],
 				zip: [null, Validators.required],

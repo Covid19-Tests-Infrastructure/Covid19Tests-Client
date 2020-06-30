@@ -40,6 +40,18 @@
 					</mat-form-field>
 
 					<mat-form-field floatLabel="auto" class="form-field">
+						<mat-label>Krankenkasse bzw. Kostenträger</mat-label>
+						<input matInput formControlName="healthCareOrganisationNumber">
+						<mat-error>Feld muss ausgefüllt werden.</mat-error>
+					</mat-form-field>
+				
+					<mat-form-field floatLabel="auto" class="form-field">
+						<mat-label>Versicherten-/ Kostenträgernummer</mat-label>
+						<input matInput formControlName="personalHealthCareNumber">
+						<mat-error>Feld muss ausgefüllt werden.</mat-error>
+					</mat-form-field>
+
+					<mat-form-field floatLabel="auto" class="form-field">
 						<mat-label>Versichtertenart</mat-label>
 						<input matInput formControlName="insuranceType" [matAutocomplete]="autoInsurance">
 						<mat-autocomplete #autoInsurance="matAutocomplete">
